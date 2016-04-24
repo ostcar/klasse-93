@@ -1,12 +1,17 @@
 from django.db import models
 
 class Teilnehmer(models.Model):
+    STATE_UNKNOWN = 0
+    STATE_SURE = 1
+    STATE_NOT = 2
+    STATE_PROPABLY = 3
+    STATE_UNDESIDED = 4
     STATE = (
-        (0, 'Unbekannt'),
-        (1, 'Kommt sicher'),
-        (2, 'Kommt nicht'),
-        (3, 'Kommt vermutlich'),
-        (4, 'Unentschlossen'),
+        (STATE_UNKNOWN, 'Unbekannt'),
+        (STATE_SURE, 'Kommt sicher'),
+        (STATE_NOT, 'Kommt nicht'),
+        (STATE_PROPABLY, 'Kommt vermutlich'),
+        (STATE_UNDESIDED, 'Unentschlossen'),
     )
     name = models.CharField(max_length=255)
     mail = models.EmailField(null=True, blank=True)
