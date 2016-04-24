@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Q
 
 from .models import Teilnehmer
 
@@ -31,11 +32,9 @@ class HasMailFilter(admin.SimpleListFilter):
         # Compare the requested value (either '80s' or '90s')
         # to decide how to filter the queryset.
         if self.value() == 'bekannt':
-            return queryset.exclude(mail="",
-                                    mail__isnull=True)
+            return queryset.exclude(mail="").exclude(mail__isnull=True)
         if self.value() == 'unbekannt':
-            return queryset.filter(mail="",
-                                   mail__isnull=True)
+            return queryset.filter(Q(mail="") | Q(mail__isnull=True))
 
 
 @admin.register(Teilnehmer)
