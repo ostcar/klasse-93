@@ -49,7 +49,7 @@ set_status_sure.short_description = "Kommt sicher"
 
 def set_status_not(modeladmin, request, queryset):
     queryset.update(state=Teilnehmer.STATE_NOT)
-set_status_not.short_description = "Unbekannt nicht"
+set_status_not.short_description = "Kommt nicht"
 
 
 def set_status_propably(modeladmin, request, queryset):
@@ -57,13 +57,13 @@ def set_status_propably(modeladmin, request, queryset):
 set_status_propably.short_description = "Kommt vermutlich"
 
 
-def set_status_unknown(modeladmin, request, queryset):
+def set_status_undesided(modeladmin, request, queryset):
     queryset.update(state=Teilnehmer.STATE_UNDESIDED)
-set_status_unknown.short_description = "Unentschieden ob er/sie kommt"
+set_status_undesided.short_description = "Unentschieden ob er/sie kommt"
 
 @admin.register(Teilnehmer)
 class  TeilnehmerAdmin(admin.ModelAdmin):
     list_display = ('name', 'mail', 'state')
     list_filter = (HasMailFilter, 'state')
     preserve_filters = True
-    actions = [set_status_unknown, set_status_sure, set_status_not, set_status_propably, set_status_unknown]
+    actions = [set_status_unknown, set_status_sure, set_status_not, set_status_propably, set_status_undesided]
