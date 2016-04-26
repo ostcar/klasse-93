@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block sitebar %}
+<nav>
+	<ul>
+		<li><a href="/">Zurück</a></li>
+	</ul>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+<section id="intro" class="wrapper style1 fullscreen fade-up">
+	<div class="inner">
+		<h1>Neuer Kommentar</h1>
+		<form action="" method="post">
+			{% csrf_token %}
+			{{ form }}
+	    <input type="submit" value="OK">
+	</form>
+	</div>
+</section>
+
+<section id="liste" class="wrapper style1 fade-down">
+		<div class="inner">
+			<h2>Klassenliste</h2>
+			<p>
+				Damit wir Personen einladen können, die irgendwann mit uns in der Klasse waren, brauchen wir alle E-Mail-Adressen. In der folgenden Liste habe ich alle potenziellen Teilnehmer eingetragen und vermerkt, ob uns die E-Mail-Adresse bekannt ist. Wenn euch weitere Personen einfallen oder ihr E-Mail-Adressen kennt, dann teilt uns diese bitte an info<span>@</span>klasse-93.de mit.
+			</p>
+			<table>
+				<tr>
+					<th>Name</th><th>E-Mail bekannt</th><th>Ist dabei</th>
+				</tr>
+				{% for teilnehmer in teilnehmer_list %}
+				<tr>
+					<td>{{ teilnehmer.name }}</td>
+					<td>{% if teilnehmer.mail %}Ja{% else %}Nein{% endif %}</td>
+					<td>{{ teilnehmer.get_state_display }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+			<p>
+				Gesamt: {{ teilnehmer_list|length }}<br>
+				Zusagen: {{ teilnehmer_count }}
+			</p>
+		</div>
+</section>
+{% endblock %}

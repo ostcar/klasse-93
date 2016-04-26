@@ -22,4 +22,5 @@ from app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.HomeView.as_view()),
+    url(r'^comment/$', views.CommentCreateView.as_view())
 ]

@@ -27,3 +27,12 @@ class Teilnehmer(models.Model):
     def has_mail(self):
         return bool(self.mail)
     has_mail.short_description = 'E-Mail bekannt'
+
+
+class Comment(models.Model):
+    author = models.CharField(max_length=255)
+    text = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ("-date", )

@@ -6,6 +6,30 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+article.comment address.author {
+	display: inline;
+}
+
+article.comment .byline {
+	font-size: 80%;
+	font-style: italic;
+}
+
+article.comment .article-content {
+	border: 1px solid;
+	padding: 3px;
+	border-style: dotted;
+	margin-bottom: 1em;
+}
+
+article.comment .article-content p {
+	margin-bottom: 0.5em;
+}
+
+article.comment .article-content p:last-child {
+	margin-bottom: 0;
+}
+
 /* Reset */
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {

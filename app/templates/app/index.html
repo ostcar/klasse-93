@@ -1,84 +1,70 @@
-{% load staticfiles %}<!DOCTYPE HTML>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Klassentreffen</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="{% static 'assets/css/ie9.css' %}" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="{% static 'assets/css/ie8.css' %}" /><![endif]-->
-	</head>
-	<body>
-		<!-- Sidebar -->
-		<section id="sidebar">
-			<div class="inner">
-				<nav>
-					<ul>
-						<li><a href="#intro">Welcome</a></li>
-						<li><a href="#liste">Klassenliste</a></li>
-					</ul>
-				</nav>
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load tz %}
+
+{% block sitebar %}
+<nav>
+	<ul>
+		<li><a href="#intro">Willkommen</a></li>
+		<li><a href="#liste">Klassenliste</a></li>
+		<li><a href="#comments">Kommentare</a></li>
+	</ul>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+<section id="intro" class="wrapper style1 fullscreen fade-up">
+	<div class="inner">
+		<h1>Klassentreffen Jahrgang 1993</h1>
+		<p>Für viele Jahre haben wir uns täglich gesehen, davon hatten wir jetzt ca. 10 Jahre Pause. Nun ist es soweit, dass wir wieder einmal zusammen finden wollen. Am Samstag den 11. Juni 2016 findet unser erstes Klassentreffen statt.</p>
+		<p>Das Programm ist noch in der Planung. Der aktuelle Stand ist, dass wir uns gegegen 15:00 Uhr in der Schule zum Kaffee und Kuchen treffen. Gegen 18:00 Uhr werden wir dann gemeinsam essen gehen, vermutlich nach Villingen.</p>
+		<p>Weitere Informationen werden wir bald hier auf der Seite veröffentlichen.</p>
+	</div>
+</section>
+
+<section id="liste" class="wrapper style1 fade-down">
+	<div class="inner">
+		<h2>Klassenliste</h2>
+		<p>
+			Damit wir Personen einladen können, die irgendwann mit uns in der Klasse waren, brauchen wir alle E-Mail-Adressen. In der folgenden Liste habe ich alle potenziellen Teilnehmer eingetragen und vermerkt, ob uns die E-Mail-Adresse bekannt ist. Wenn euch weitere Personen einfallen oder ihr E-Mail-Adressen kennt, dann teilt uns diese bitte an info<span>@</span>klasse-93.de mit.
+		</p>
+		<table>
+			<tr>
+				<th>Name</th><th>E-Mail bekannt</th><th>Ist dabei</th>
+			</tr>
+			{% for teilnehmer in teilnehmer_list %}
+			<tr>
+				<td>{{ teilnehmer.name }}</td>
+				<td>{% if teilnehmer.mail %}Ja{% else %}Nein{% endif %}</td>
+				<td>{{ teilnehmer.get_state_display }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<p>
+			Gesamt: {{ teilnehmer_list|length }}<br>
+			Zusagen: {{ teilnehmer_count }}
+		</p>
+	</div>
+</section>
+
+<section id="comments" class="wrapper style1 fade-down">
+	<div class="inner">
+	<h2>Kommentare</h2>
+	<p><a href="/comment/">Neuer Kommentar</a></p>
+
+		{% for comment in comment_list %}
+		<article class="comment">
+			<div class="byline">
+				<address class="author">Von {{ comment.author }}</address>
+				am <time pubdate datetime="{{ comment.date|date:"c" }}">{{ comment.date }}</time>
 			</div>
-		</section>
-
-		<div id="wrapper">
-			<section id="intro" class="wrapper style1 fullscreen fade-up">
-				<div class="inner">
-					<h1>Klassentreffen Jahrgang 1993</h1>
-					<p>Für viele Jahre haben wir uns täglich gesehen, davon hatten wir jetzt ca. 10 Jahre Pause. Nun ist es soweit, dass wir wieder einmal zusammen finden wollen. Am Samstag den 11. Juni 2016 findet unser erstes Klassentreffen statt.</p>
-					<p>Das Programm ist noch in der Planung. Der aktuelle Stand ist, dass wir uns gegegen 15:00 Uhr in der Schule zum Kaffee und Kuchen treffen. Gegen 18:00 Uhr werden wir dann gemeinsam essen gehen, vermutlich nach Villingen.</p>
-					<p>Weitere Informationen werden wir bald hier auf der Seite veröffentlichen.</p>
-				</div>
-			</section>
-
-			<section id="liste" class="wrapper style1 fade-down">
-					<div class="inner">
-						<h2>Klassenliste</h2>
-						<p>
-							Damit wir Personen einladen können, die irgendwann mit uns in der Klasse waren, brauchen wir alle E-Mail-Adressen. In der folgenden Liste habe ich alle potenziellen Teilnehmer eingetragen und vermerkt, ob uns die E-Mail-Adresse bekannt ist. Wenn euch weitere Personen einfallen oder ihr E-Mail-Adressen kennt, dann teilt uns diese bitte an info<span>@</span>klasse-93.de mit.
-						</p>
-						<table>
-							<tr>
-								<th>Name</th><th>E-Mail bekannt</th><th>Ist dabei</th>
-							</tr>
-							{% for teilnehmer in teilnehmer_list %}
-							<tr>
-								<td>{{ teilnehmer.name }}</td>
-								<td>{% if teilnehmer.mail %}Ja{% else %}Nein{% endif %}</td>
-								<td>{{ teilnehmer.get_state_display }}</td>
-							</tr>
-							{% endfor %}
-						</table>
-						<p>
-							Gesamt: {{ teilnehmer_list|length }}<br>
-							Zusagen: {{ teilnehmer_count }}
-						</p>
-					</div>
-			</section>
-		</div>
-
-		<!-- Footer -->
-		<footer id="footer" class="wrapper style1-alt">
-			<div class="inner">
-				<ul class="menu">
-					<li>Design: "<a href="http://html5up.net/hyperspace">Hyperspace</a>" by <a href="http://html5up.net">html5up</a> is licensed under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></li>
-				</ul>
+			<div class="article-content">
+				{{ comment.text|linebreaks }}
 			</div>
-		</footer>
+		</article>
+		{% endfor %}
 
-		<!-- Scripts -->
-		<script src="{% static 'assets/js/jquery.min.js' %}"></script>
-		<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
-		<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
-		<script src="{% static 'assets/js/skel.min.js' %}"></script>
-		<script src="{% static 'assets/js/util.js' %}"></script>
-		<!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
-		<script src="{% static 'assets/js/main.js' %}"></script>
-	</body>
-</html>
+	</div>
+</section
+{% endblock %}
