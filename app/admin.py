@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db.models import Q
 
-from .models import Teilnehmer
+from .models import Teilnehmer, Comment
 
 
 class HasMailFilter(admin.SimpleListFilter):
@@ -61,9 +61,17 @@ def set_status_undesided(modeladmin, request, queryset):
     queryset.update(state=Teilnehmer.STATE_UNDESIDED)
 set_status_undesided.short_description = "Unentschieden ob er/sie kommt"
 
+
 @admin.register(Teilnehmer)
 class  TeilnehmerAdmin(admin.ModelAdmin):
     list_display = ('name', 'mail', 'state')
     list_filter = (HasMailFilter, 'state')
     preserve_filters = True
     actions = [set_status_unknown, set_status_sure, set_status_not, set_status_propably, set_status_undesided]
+
+
+@admin.register(Comment)
+class  CommentAdmin(admin.ModelAdmin):
+    list_display = ('author', 'date', '__str__')
+    list_filter = ('author', )
+    preserve_filters = True

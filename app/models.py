@@ -36,3 +36,6 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ("-date", )
+        
+    def __str__(self):
+        return (self.text[:30] + '...') if len(self.text) > 30 else self.text
