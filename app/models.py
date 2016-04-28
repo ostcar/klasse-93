@@ -17,6 +17,7 @@ class Teilnehmer(models.Model):
     mail = models.EmailField(null=True, blank=True)
     comment = models.TextField(blank=True)
     state = models.IntegerField(choices=STATE, default=0, verbose_name="Kommt")
+    is_teacher = models.BooleanField(default=False, verbose_name="Ist Lehrer")
 
     class Meta:
         ordering  = ("name", )
@@ -36,6 +37,6 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ("-date", )
-        
+
     def __str__(self):
         return (self.text[:30] + '...') if len(self.text) > 30 else self.text
