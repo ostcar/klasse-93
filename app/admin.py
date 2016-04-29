@@ -72,6 +72,5 @@ class  TeilnehmerAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class  CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'date', '__str__')
-    list_filter = ('author', )
+    list_display = ('teilnehmer', 'date', '__str__')
     preserve_filters = True
