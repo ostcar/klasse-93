@@ -31,10 +31,9 @@ class Teilnehmer(models.Model):
 
 
 class Comment(models.Model):
-    author = models.CharField(max_length=255)
+    teilnehmer = models.ForeignKey(Teilnehmer)
     text = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    teilnehmer = models.ForeignKey(Teilnehmer, null=True)
 
     class Meta:
         ordering = ("-date", )
