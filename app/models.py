@@ -15,7 +15,7 @@ class Teilnehmer(models.Model):
     )
     name = models.CharField(max_length=255)
     mail = models.EmailField(null=True, blank=True)
-    comment = models.TextField(blank=True)
+    intern_comment = models.TextField(blank=True, verbose_name="Kommentar")
     state = models.IntegerField(choices=STATE, default=0, verbose_name="Kommt")
     is_teacher = models.BooleanField(default=False, verbose_name="Ist Lehrer")
 
@@ -34,6 +34,7 @@ class Comment(models.Model):
     author = models.CharField(max_length=255)
     text = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
+    teilnehmer = models.ForeignKey(Teilnehmer, null=True)
 
     class Meta:
         ordering = ("-date", )

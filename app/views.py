@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView
 
 from .models import Teilnehmer, Comment
+from .forms import CommentForm
+
 
 class HomeView(ListView):
     model = Teilnehmer
@@ -21,7 +23,8 @@ class HomeView(ListView):
             comment_list=comment_list,
             **context)
 
+
 class CommentCreateView(CreateView):
     model = Comment
-    fields = ('author', 'text')
     success_url = '/'
+    form_class = CommentForm

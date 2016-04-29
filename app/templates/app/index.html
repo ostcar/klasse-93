@@ -75,7 +75,7 @@
 		{% for comment in comment_list %}
 		<article class="comment">
 			<div class="byline">
-				<address class="author">Von {{ comment.author }}</address>
+				<address class="author">Von {{ comment.teilnehmer.name }}</address>
 				am <time pubdate datetime="{{ comment.date|date:"c" }}">{{ comment.date }}</time>
 			</div>
 			<div class="article-content">

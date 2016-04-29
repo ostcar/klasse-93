@@ -204,7 +204,12 @@
 
 						}
 					});
-
 	});
+
+	$('#id_mail').val(localStorage.getItem("mail"));
+
+	$('#comment_form').submit(function (event) {
+		localStorage.setItem("mail", $('#id_mail').val())
+	})
 
 })(jQuery);
