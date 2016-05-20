@@ -17,7 +17,6 @@ class Teilnehmer(models.Model):
     mail = models.EmailField(null=True, blank=True)
     intern_comment = models.TextField(blank=True, verbose_name="Kommentar")
     state = models.IntegerField(choices=STATE, default=0, verbose_name="Kommt")
-    is_teacher = models.BooleanField(default=False, verbose_name="Ist Lehrer")
 
     class Meta:
         ordering  = ("name", )

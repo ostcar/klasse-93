@@ -34,36 +34,17 @@
 				<th>Name</th><th>E-Mail bekannt</th><th>Ist dabei</th>
 			</tr>
 			{% for teilnehmer in teilnehmer_list %}
-			{% if not teilnehmer.is_teacher %}
 			<tr>
 				<td>{{ teilnehmer.name }}</td>
 				<td>{% if teilnehmer.mail %}Ja{% else %}Nein{% endif %}</td>
 				<td>{{ teilnehmer.get_state_display }}</td>
 			</tr>
-			{% endif %}
 			{% endfor %}
 		</table>
 		<p>
 			Gesamt: {{ teilnehmer_list|length }}<br>
 			Zusagen: {{ teilnehmer_count }}
 		</p>
-		<h2>Lehrerliste</h2>
-		<p>
-			Weiterhin möchten wir für den Teil am Nachmittag auch unsere alten Lehrer einladen. Damit wir an alle Lehrer denken, erstellen wir auch hier eine Liste. Wenn euch noch Lehrer einfallen, dann schickt uns diese bitte ebenfalls an info<span>@</span>klasse-93.de.
-		</p>
-		<table>
-			<tr>
-				<th>Name</th><th>Ist dabei</th>
-			</tr>
-			{% for teilnehmer in teilnehmer_list %}
-			{% if teilnehmer.is_teacher %}
-			<tr>
-				<td>{{ teilnehmer.name }}</td>
-				<td>{{ teilnehmer.get_state_display }}</td>
-			</tr>
-			{% endif %}
-			{% endfor %}
-		</table>
 	</div>
 </section>
 

@@ -64,8 +64,8 @@ set_status_undesided.short_description = "Unentschieden ob er/sie kommt"
 
 @admin.register(Teilnehmer)
 class  TeilnehmerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'mail', 'state', 'is_teacher')
-    list_filter = (HasMailFilter, 'state', 'is_teacher')
+    list_display = ('name', 'mail', 'state')
+    list_filter = (HasMailFilter, 'state')
     preserve_filters = True
     actions = [set_status_unknown, set_status_sure, set_status_not, set_status_propably, set_status_undesided]
 
