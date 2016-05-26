@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView, ListView
 
 from .models import Teilnehmer, Comment
 from .forms import CommentForm, SendTokenForm
 from django.core.urlresolvers import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomeView(ListView):
@@ -67,3 +68,7 @@ class TeilnehmerUpdateView(UpdateView):
 class TeilnehmerDetailView(DetailView):
     model = Teilnehmer
     slug_url_kwarg = slug_field = 'token'
+
+
+class TeilnehmerListView(LoginRequiredMixin, ListView):
+    queryset = Teilnehmer.objects.exclude(location_current="")

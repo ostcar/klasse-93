@@ -2,5 +2,7 @@
 {% load staticfiles %}
 
 {% block paper %}
+{% for teilnehmer in teilnehmer_list %}
 {% include 'app/teilnehmer_content.html' %}
+{% endfor %}
 {% endblock paper %}

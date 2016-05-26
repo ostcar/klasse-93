@@ -35,4 +35,8 @@ urlpatterns = [
         r'^show/(?P<token>[a-z0-9]+)/$',
         views.TeilnehmerDetailView.as_view(),
         name="show"),
+    url(
+        r'^show/$',
+        views.TeilnehmerListView.as_view(),
+        name="show"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

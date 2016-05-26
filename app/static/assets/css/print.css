@@ -10,3 +10,9 @@ dl dt {
   font-weight: bold;
   margin-top: 0.5em;
 }
+
+@media print {
+  dl {
+    page-break-after: always;
+  }
+}

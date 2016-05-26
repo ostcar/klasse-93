@@ -87,7 +87,8 @@ class Teilnehmer(models.Model):
         models.CharField(max_length=255),
         verbose_name="hobbies",
         default=list,
-        help_text="Durch ein Komma getrennt")
+        help_text="Durch ein Komma getrennt",
+        blank=True)
     school_memory = models.TextField(
         verbose_name="Erinnerung an Schulzeit",
         help_text="Eine besondere Erinnerung an die gemeinsame Schulzeit.",
