@@ -1,0 +1,41 @@
+{% load staticfiles %}<!DOCTYPE HTML>
+<html lang="de">
+  <head>
+    <title>{{ teilnehmer.name }}</title>
+    <link rel="stylesheet" href="{% static 'assets/css/print.css' %}" />
+  </head>
+  <body>
+    <div class="paper">
+      <h1>{{ teilnehmer.name }}</h1>
+      {% if teilnehmer.image_new and teilnehmer.image_old %}
+        <img src="{{ teilnehmer.image_new.url }}" alt="Neues Bild">
+        <img src="{{ teilnehmer.image_old.url }}" alt="Altes Bild">
+      {% endif %}
+      <dl>
+        <dt>E-Mail-Adresse:</dt>
+        <dd>{{ teilnehmer.mail }}</dd>
+
+        <dt>Wohnort: </dt>
+        <dd>{{ teilnehmer.location_current }}</dd>
+
+        <dt>Wohnorte seit der Schulzeit:</dt>
+        <dd>{{ teilnehmer.locations_old|join:", " }}</dd>
+
+        <dt>Beziehungsstatus:</dt>
+        <dd>{{ teilnehmer.relationship_status }}</dd>
+
+        <dt>Anzahl Kinder:</dt>
+        <dd>{{ teilnehmer.kids }}</dd>
+
+        <dt>Beruf:</dt>
+        <dd>{{ teilnehmer.job }}</dd>
+
+        <dt>Hobbies:</dt>
+        <dd>{{ teilnehmer.hobbies|join:", " }}</dd>
+
+        <dt>Ereignis in der Schulzeit:</dt>
+        <dd> {{ teilnehmer.school_memory|linebreaks }}</dd>
+      </dl>
+    <div>
+  </body>
+</html>

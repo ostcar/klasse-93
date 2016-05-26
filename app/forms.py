@@ -33,20 +33,3 @@ class CommentForm(CleanMailMixin, forms.ModelForm):
 
 class SendTokenForm(CleanMailMixin, forms.Form):
     mail = forms.EmailField(label="E-Mail-Adresse")
-
-
-class TeilnehmerForm(forms.ModelForm):
-    class Meta:
-        model = Teilnehmer
-        fields = [
-                'state',
-                'location_current',
-                'job',
-                'relationship_status',
-                'kids',
-                'image_new',
-                'image_old',
-                'locations_old',
-                'hobbies',
-                'school_memory',
-            ]

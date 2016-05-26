@@ -1,0 +1,12 @@
+.paper {
+  max-width: 670px;
+  margin: auto;
+}
+h1 {
+  text-align: center;
+}
+
+dl dt {
+  font-weight: bold;
+  margin-top: 0.5em;
+}

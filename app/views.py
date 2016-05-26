@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 
 from .models import Teilnehmer, Comment
-from .forms import CommentForm, SendTokenForm, TeilnehmerForm
+from .forms import CommentForm, SendTokenForm
 from django.core.urlresolvers import reverse
 
 
@@ -45,9 +45,25 @@ class CommentCreateView(CreateView):
 
 class TeilnehmerUpdateView(UpdateView):
     model = Teilnehmer
-    form_class = TeilnehmerForm
+    fields = [
+            'state',
+            'location_current',
+            'locations_old',
+            'relationship_status',
+            'kids',
+            'image_new',
+            'image_old',
+            'job',
+            'hobbies',
+            'school_memory',
+        ]
     slug_url_kwarg = 'token'
     slug_field = 'token'
 
     def get_success_url(self):
         return reverse("edit", kwargs={'token': self.object.get_token()})
+
+
+class TeilnehmerDetailView(DetailView):
+    model = Teilnehmer
+    slug_url_kwarg = slug_field = 'token'

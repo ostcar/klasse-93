@@ -4,6 +4,8 @@ import random
 import string
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 
 def create_token(length=8):
@@ -56,28 +58,36 @@ class Teilnehmer(models.Model):
         max_length=32,
         verbose_name="Beziehungsstatus",
         default="Zu haben")
-    kids = models.IntegerField(
+    kids = models.PositiveIntegerField(
         default=0,
         verbose_name="Anzahl Kinder")
-    image_new = models.ImageField(
+    image_new = ProcessedImageField(
         upload_to='teilnehmer',
         verbose_name="Aktuelles Bild",
         null=True,
-        blank=True)
-    image_old = models.ImageField(
+        blank=True,
+        processors=[ResizeToFill(300, 300)],
+        format='JPEG',
+        options={'quality': 99})
+    image_old = ProcessedImageField(
         upload_to='teilnehmer',
         verbose_name="Erstes klassenbild",
         null=True,
-        blank=True)
+        blank=True,
+        processors=[ResizeToFill(300, 300)],
+        format='JPEG',
+        options={'quality': 99})
     locations_old = ArrayField(
         models.CharField(max_length=255),
         verbose_name="Wohnorte seit der Schulzeit",
         default=list,
-        blank=True)
+        blank=True,
+        help_text="Durch ein Komma getrennt")
     hobbies = ArrayField(
         models.CharField(max_length=255),
         verbose_name="hobbies",
-        default=list)
+        default=list,
+        help_text="Durch ein Komma getrennt")
     school_memory = models.TextField(
         verbose_name="Erinnerung an Schulzeit",
         help_text="Eine besondere Erinnerung an die gemeinsame Schulzeit.",
