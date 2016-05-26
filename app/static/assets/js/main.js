@@ -206,10 +206,21 @@
 					});
 	});
 
-	$('#id_mail').val(localStorage.getItem("mail"));
+	if(localStorage.getItem("mail")) {
+		$('#id_mail').val(localStorage.getItem("mail"));
+	}
 
 	$('#comment_form').submit(function (event) {
 		localStorage.setItem("mail", $('#id_mail').val())
 	})
+
+	$('#comment_form').submit(function (event) {
+		localStorage.setItem("mail", $('#id_mail').val())
+	})
+
+	$('#token_form').submit(function (event) {
+		localStorage.setItem("mail", $('#id_mail').val())
+	})
+
 
 })(jQuery);

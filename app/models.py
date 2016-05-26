@@ -1,4 +1,16 @@
 from django.db import models
+from django.contrib.postgres.fields import ArrayField
+import random
+import string
+from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
+
+
+def create_token(length=8):
+    while True:
+        token = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(length))
+        if not Teilnehmer.objects.filter(token=token).exists():
+            return token
 
 class Teilnehmer(models.Model):
     STATE_UNKNOWN = 0
@@ -13,10 +25,63 @@ class Teilnehmer(models.Model):
         (STATE_PROPABLY, 'Kommt vermutlich'),
         (STATE_UNDESIDED, 'Unentschlossen'),
     )
+
     name = models.CharField(max_length=255)
     mail = models.EmailField(null=True, blank=True)
     intern_comment = models.TextField(blank=True, verbose_name="Kommentar")
-    state = models.IntegerField(choices=STATE, default=0, verbose_name="Kommt")
+    state = models.IntegerField(
+        choices=STATE,
+        default=0,
+        verbose_name="Ist dabei",
+        help_text="Wird am Klassentreffen dabei sein.")
+
+    token = models.CharField(
+        max_length=32,
+        null=True,
+        unique=True)
+
+    mail_public = models.BooleanField(
+        default=True,
+        verbose_name="E-Mail Adresse darf veröffentlicht werden",
+        help_text="Die Adresse wird nur Klassenintern veröffentlicht.")
+    location_current = models.CharField(
+        max_length=255,
+        verbose_name="Wohnort",
+        blank=True)
+    job = models.CharField(
+        max_length=255,
+        verbose_name="Beruf/Beschäftigung",
+        blank=True)
+    relationship_status = models.CharField(
+        max_length=32,
+        verbose_name="Beziehungsstatus",
+        default="Zu haben")
+    kids = models.IntegerField(
+        default=0,
+        verbose_name="Anzahl Kinder")
+    image_new = models.ImageField(
+        upload_to='teilnehmer',
+        verbose_name="Aktuelles Bild",
+        null=True,
+        blank=True)
+    image_old = models.ImageField(
+        upload_to='teilnehmer',
+        verbose_name="Erstes klassenbild",
+        null=True,
+        blank=True)
+    locations_old = ArrayField(
+        models.CharField(max_length=255),
+        verbose_name="Wohnorte seit der Schulzeit",
+        default=list,
+        blank=True)
+    hobbies = ArrayField(
+        models.CharField(max_length=255),
+        verbose_name="hobbies",
+        default=list)
+    school_memory = models.TextField(
+        verbose_name="Erinnerung an Schulzeit",
+        help_text="Eine besondere Erinnerung an die gemeinsame Schulzeit.",
+        blank=True)
 
     class Meta:
         ordering  = ("name", )
@@ -27,6 +92,36 @@ class Teilnehmer(models.Model):
     def has_mail(self):
         return bool(self.mail)
     has_mail.short_description = 'E-Mail bekannt'
+
+    def get_token(self):
+        if not self.token:
+            self.token = create_token()
+            self.save()
+        return self.token
+
+    def get_edit_link(self):
+        return "{host}{path}".format(
+            host="http://klasse-93.de",
+            #host="localhost:8000",
+            path=reverse("edit", kwargs={'token': self.get_token()}),
+        )
+
+    def send_token(self):
+        send_mail(
+            'Klassenbuch',
+            """Hallo {name},
+
+hier ist dein persönlicher Link:
+
+{link}
+
+Viele Grüße
+das Klassentreffenteam""".format(
+                name=self.name,
+                link=self.get_edit_link()
+            ),
+            'info@klasse-93.de',
+    ['to@example.com'], fail_silently=False)
 
 
 class Comment(models.Model):

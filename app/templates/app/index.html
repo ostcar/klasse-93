@@ -6,6 +6,7 @@
 <nav>
 	<ul>
 		<li><a href="#intro">Willkommen</a></li>
+		<li><a href="#klassenbuch">Klassenbuch</a></li>
 		<li><a href="#liste">Klassenliste</a></li>
 		<li><a href="#comments">Kommentare</a></li>
 	</ul>
@@ -20,6 +21,20 @@
 		<p>Für viele Jahre haben wir uns täglich gesehen, davon hatten wir jetzt ca. 10 Jahre Pause. Nun ist es soweit, dass wir wieder einmal zusammen finden wollen. Am Samstag den 11. Juni 2016 findet unser erstes Klassentreffen statt.</p>
 		<p>Das Programm ist noch in der Planung. Der aktuelle Stand ist, dass wir uns gegegen 15:00 Uhr in der Schule zum Kaffee und Kuchen treffen. Gegen 18:00 Uhr werden wir dann gemeinsam essen gehen, vermutlich nach Villingen.</p>
 		<p>Weitere Informationen werden wir bald hier auf der Seite veröffentlichen.</p>
+	</div>
+</section>
+
+<section id="klassenbuch" class="wrapper style1 fade-down">
+	<div class="inner">
+		<h2>Klassenbuch</h2>
+		<p>
+			Wir möchten gerne ein Klassenbuch erstellen. Dafür brauchen wir eure Mithilfe. Bitte füllt hierfür das Formular für euch aus. Den Link zum Formular müsstet ihr zugeschickt bekommen haben. Wenn nicht, dann tragt bitte eure E-Mail-Adresse hier ein.
+		</p>
+		<form id="token_form" action="" method="post">
+			{% csrf_token %}
+			{{ token_form }}
+			<input type="submit" value="Senden">
+		</form>
 	</div>
 </section>
 

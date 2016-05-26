@@ -16,11 +16,18 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic import ListView
+from django.conf import settings
+from django.conf.urls.static import static
 
 from app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
     url(r'^$', views.HomeView.as_view()),
-    url(r'^comment/$', views.CommentCreateView.as_view())
-]
+    url(r'^comment/$', views.CommentCreateView.as_view()),
+    url(
+        r'^edit/(?P<token>[a-z0-9]+)/$',
+        views.TeilnehmerUpdateView.as_view(),
+        name="edit"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
