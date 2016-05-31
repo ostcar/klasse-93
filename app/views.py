@@ -55,7 +55,6 @@ class TeilnehmerUpdateView(UpdateView):
             'image_old',
             'job',
             'hobbies',
-            'school_memory',
         ]
     slug_url_kwarg = 'token'
     slug_field = 'token'
