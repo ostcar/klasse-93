@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'klassentreffen',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'postgres',
+        'HOST': 'localhost',
     }
 }
 

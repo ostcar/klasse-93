@@ -1,6 +1,8 @@
 <h1>{{ teilnehmer.name }}</h1>
-{% if teilnehmer.image_new and teilnehmer.image_old %}
+{% if teilnehmer.image_new %}
   <img src="{{ teilnehmer.image_new.url }}" alt="Neues Bild">
+{% endif %}
+{% if teilnehmer.image_old %}
   <img src="{{ teilnehmer.image_old.url }}" alt="Altes Bild">
 {% endif %}
 <dl>
