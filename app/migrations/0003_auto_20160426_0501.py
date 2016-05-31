@@ -24,6 +24,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='teilnehmer',
             name='state',
-            field=models.IntegerField(choices=[(0, 'Unbekannt'), (1, 'Kommt sicher'), (2, 'Kommt nicht'), (3, 'Kommt vermutlich'), (4, 'Unentschlossen')], default=0, verbose_name='Kommt'),
+            field=models.IntegerField(
+                choices=[(0, 'Unbekannt'), (1, 'Kommt sicher'), (2, 'Kommt nicht'), (3, 'Kommt vermutlich'), (4, 'Unentschlossen')],
+                default=0, verbose_name='Kommt'),
         ),
     ]

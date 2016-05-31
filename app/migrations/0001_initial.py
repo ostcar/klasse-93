@@ -20,7 +20,9 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=255)),
                 ('mail', models.EmailField(blank=True, max_length=254, null=True)),
                 ('comment', models.TextField()),
-                ('state', models.IntegerField(choices=[(0, 'Unbekannt'), (1, 'Kommt sicher'), (2, 'Kommt nicht'), (3, 'Kommt vermutlich'), (4, 'Unentschlossen')], default=0)),
+                ('state', models.IntegerField(
+                    choices=[(0, 'Unbekannt'), (1, 'Kommt sicher'), (2, 'Kommt nicht'), (3, 'Kommt vermutlich'), (4, 'Unentschlossen')],
+                    default=0)),
             ],
         ),
     ]

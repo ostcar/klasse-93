@@ -1,4 +1,5 @@
 from django import forms
+
 from .models import Comment, Teilnehmer
 
 
@@ -16,7 +17,10 @@ class CleanMailMixin:
 
 
 class CommentForm(CleanMailMixin, forms.ModelForm):
-    mail = forms.EmailField(label="E-Mail-Adresse", help_text="Die E-Mail-Adresse wird nicht angezeigt. Anhand der E-Mail-Adresse ermitteln wir den Namen, der über deinem Kommentar erscheint.")
+    mail = forms.EmailField(
+        label="E-Mail-Adresse",
+        help_text="Die E-Mail-Adresse wird nicht angezeigt. Anhand der E-Mail-Adresse "
+                  "ermitteln wir den Namen, der über deinem Kommentar erscheint.")
 
     class Meta:
         model = Comment

@@ -16,6 +16,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='teilnehmer',
             name='hobbies',
-            field=django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=255), blank=True, default=list, help_text='Durch ein Komma getrennt', size=None, verbose_name='hobbies'),
+            field=django.contrib.postgres.fields.ArrayField(
+                base_field=models.CharField(max_length=255),
+                blank=True,
+                default=list,
+                help_text='Durch ein Komma getrennt',
+                size=None,
+                verbose_name='hobbies'),
         ),
     ]

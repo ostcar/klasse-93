@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 
 import django.contrib.postgres.fields
-from django.db import migrations, models
 import imagekit.models.fields
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
@@ -17,17 +17,29 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='teilnehmer',
             name='hobbies',
-            field=django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=255), default=list, help_text='Durch ein Komma getrennt', size=None, verbose_name='hobbies'),
+            field=django.contrib.postgres.fields.ArrayField(
+                base_field=models.CharField(max_length=255),
+                default=list,
+                help_text='Durch ein Komma getrennt',
+                size=None, verbose_name='hobbies'),
         ),
         migrations.AddField(
             model_name='teilnehmer',
             name='image_new',
-            field=imagekit.models.fields.ProcessedImageField(blank=True, null=True, upload_to='teilnehmer', verbose_name='Aktuelles Bild'),
+            field=imagekit.models.fields.ProcessedImageField(
+                blank=True,
+                null=True,
+                upload_to='teilnehmer',
+                verbose_name='Aktuelles Bild'),
         ),
         migrations.AddField(
             model_name='teilnehmer',
             name='image_old',
-            field=imagekit.models.fields.ProcessedImageField(blank=True, null=True, upload_to='teilnehmer', verbose_name='Erstes klassenbild'),
+            field=imagekit.models.fields.ProcessedImageField(
+                blank=True,
+                null=True,
+                upload_to='teilnehmer',
+                verbose_name='Erstes klassenbild'),
         ),
         migrations.AddField(
             model_name='teilnehmer',
@@ -47,12 +59,21 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='teilnehmer',
             name='locations_old',
-            field=django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=255), blank=True, default=list, help_text='Durch ein Komma getrennt', size=None, verbose_name='Wohnorte seit der Schulzeit'),
+            field=django.contrib.postgres.fields.ArrayField(
+                base_field=models.CharField(max_length=255),
+                blank=True,
+                default=list,
+                help_text='Durch ein Komma getrennt',
+                size=None,
+                verbose_name='Wohnorte seit der Schulzeit'),
         ),
         migrations.AddField(
             model_name='teilnehmer',
             name='mail_public',
-            field=models.BooleanField(default=True, help_text='Die Adresse wird nur Klassenintern veröffentlicht.', verbose_name='E-Mail Adresse darf veröffentlicht werden'),
+            field=models.BooleanField(
+                default=True,
+                help_text='Die Adresse wird nur Klassenintern veröffentlicht.',
+                verbose_name='E-Mail Adresse darf veröffentlicht werden'),
         ),
         migrations.AddField(
             model_name='teilnehmer',
@@ -62,7 +83,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='teilnehmer',
             name='school_memory',
-            field=models.TextField(blank=True, help_text='Eine besondere Erinnerung an die gemeinsame Schulzeit.', verbose_name='Erinnerung an Schulzeit'),
+            field=models.TextField(
+                blank=True,
+                help_text='Eine besondere Erinnerung an die gemeinsame Schulzeit.',
+                verbose_name='Erinnerung an Schulzeit'),
         ),
         migrations.AddField(
             model_name='teilnehmer',
@@ -72,6 +96,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='teilnehmer',
             name='state',
-            field=models.IntegerField(choices=[(0, 'Unbekannt'), (1, 'Kommt sicher'), (2, 'Kommt nicht'), (3, 'Kommt vermutlich'), (4, 'Unentschlossen')], default=0, help_text='Wird am Klassentreffen dabei sein.', verbose_name='Ist dabei'),
+            field=models.IntegerField(
+                choices=[(0, 'Unbekannt'), (1, 'Kommt sicher'), (2, 'Kommt nicht'), (3, 'Kommt vermutlich'), (4, 'Unentschlossen')],
+                default=0,
+                help_text='Wird am Klassentreffen dabei sein.',
+                verbose_name='Ist dabei'),
         ),
     ]

@@ -1,9 +1,10 @@
-from django.db import models
-from django.contrib.postgres.fields import ArrayField
 import random
 import string
+
+from django.contrib.postgres.fields import ArrayField
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.db import models
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 
@@ -13,6 +14,7 @@ def create_token(length=8):
         token = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(length))
         if not Teilnehmer.objects.filter(token=token).exists():
             return token
+
 
 class Teilnehmer(models.Model):
     STATE_UNKNOWN = 0
@@ -95,7 +97,7 @@ class Teilnehmer(models.Model):
         blank=True)
 
     class Meta:
-        ordering  = ("name", )
+        ordering = ("name", )
 
     def __str__(self):
         return self.name
@@ -113,7 +115,6 @@ class Teilnehmer(models.Model):
     def get_edit_link(self):
         return "{host}{path}".format(
             host="http://klasse-93.de",
-            #host="localhost:8000",
             path=reverse("edit", kwargs={'token': self.get_token()}),
         )
 
@@ -132,7 +133,7 @@ das Klassentreffenteam""".format(
                 link=self.get_edit_link()
             ),
             'info@klasse-93.de',
-    [self.mail], fail_silently=False)
+            [self.mail], fail_silently=False)
 
 
 class Comment(models.Model):

@@ -1,15 +1,14 @@
-from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DetailView, ListView
-
-from .models import Teilnehmer, Comment
-from .forms import CommentForm, SendTokenForm
-from django.core.urlresolvers import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.urlresolvers import reverse
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
+
+from .forms import CommentForm, SendTokenForm
+from .models import Comment, Teilnehmer
 
 
 class HomeView(ListView):
     model = Teilnehmer
-    template_name ="app/index.html"
+    template_name = "app/index.html"
 
     def get(self, request, *args, **kwargs):
         self.token_form = SendTokenForm()

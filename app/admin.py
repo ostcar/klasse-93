@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db.models import Q
 
-from .models import Teilnehmer, Comment
+from .models import Comment, Teilnehmer
 
 
 class HasMailFilter(admin.SimpleListFilter):
@@ -63,7 +63,7 @@ set_status_undesided.short_description = "Unentschieden ob er/sie kommt"
 
 
 @admin.register(Teilnehmer)
-class  TeilnehmerAdmin(admin.ModelAdmin):
+class TeilnehmerAdmin(admin.ModelAdmin):
     list_display = ('name', 'mail', 'state')
     list_filter = (HasMailFilter, 'state')
     preserve_filters = True
@@ -71,6 +71,6 @@ class  TeilnehmerAdmin(admin.ModelAdmin):
 
 
 @admin.register(Comment)
-class  CommentAdmin(admin.ModelAdmin):
+class CommentAdmin(admin.ModelAdmin):
     list_display = ('teilnehmer', 'date', '__str__')
     preserve_filters = True
