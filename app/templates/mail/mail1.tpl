@@ -7,6 +7,8 @@ Für das Treffen möchten wir gerne eine Art „Klassenbuch“ erstellen, auch f
 diejenigen, die am 11. Juni nicht mit dabei sein können. Hierfür brauchen wir
 jedoch deine Mithilfe. Bitte fülle das verlinkte Formular aus und lade bitte
 insbesondere zwei Bilder hoch. Ein aktuelles und eines aus der Grundschulzeit.
+Wenn du auf dem Klassenfoto der ersten Klasse drauf warst, dann haben wir dieses
+Foto genommen.
 
 {{ teilnehmer.get_edit_link }}
 
