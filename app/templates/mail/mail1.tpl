@@ -10,6 +10,8 @@ insbesondere zwei Bilder hoch. Ein aktuelles und eines aus der Grundschulzeit.
 
 {{ teilnehmer.get_edit_link }}
 
+Bitte tragt eure Daten bis zum 5. Juni ein.
+
 Weiterhin möchten wir möglichst viele Bilder aus der alten Schulzeit sammeln.
 Wenn du noch irgendwo Bilder findest, dann scanne diese bitte ein und laded sie
 auf der folgenden Seite hoch:
