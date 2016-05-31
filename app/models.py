@@ -133,7 +133,8 @@ das Klassentreffenteam""".format(
                 link=self.get_edit_link()
             ),
             'info@klasse-93.de',
-            [self.mail], fail_silently=False)
+            [self.mail],
+            fail_silently=False)
 
 
 class Comment(models.Model):
