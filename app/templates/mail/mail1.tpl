@@ -18,7 +18,7 @@ auf der folgenden Seite hoch:
 
 https://cloud.klasse-93.de/index.php/s/Ff7hI8KSGUhJt1v
 
-Bitte achtet darauf den Bildern möglichst gute Namen zu geben. Zum Beispiel:
+Bitte achtet darauf, den Bildern möglichst gute Namen zu geben. Zum Beispiel:
 
 Klassenfahrt 8. Klasse Martin und Oliver.jpg
 Klassenspiel 12. Klasse Lars David und Felix.jpg
