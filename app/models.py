@@ -59,7 +59,8 @@ class Teilnehmer(models.Model):
     relationship_status = models.CharField(
         max_length=32,
         verbose_name="Beziehungsstatus",
-        default="Zu haben")
+        default="Zu haben",
+        blank=True)
     kids = models.PositiveIntegerField(
         default=0,
         verbose_name="Anzahl Kinder")
