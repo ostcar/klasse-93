@@ -1,29 +1,31 @@
-<h1>{{ teilnehmer.name }}</h1>
-{% if teilnehmer.image_new %}
-  <img src="{{ teilnehmer.image_new.url }}" alt="Neues Bild">
-{% endif %}
-{% if teilnehmer.image_old %}
-  <img src="{{ teilnehmer.image_old.url }}" alt="Altes Bild">
-{% endif %}
-<dl>
-  <dt>E-Mail-Adresse:</dt>
-  <dd>{{ teilnehmer.mail }}</dd>
+<div class="teilnehmer">
+  <h1>{{ teilnehmer.name }}</h1>
+  {% if teilnehmer.image_new %}
+    <img src="{{ teilnehmer.image_new.url }}" alt="Neues Bild">
+  {% endif %}
+  {% if teilnehmer.image_old %}
+    <img src="{{ teilnehmer.image_old.url }}" alt="Altes Bild">
+  {% endif %}
+  <dl>
+    <dt>E-Mail-Adresse:</dt>
+    <dd>{{ teilnehmer.mail }}</dd>
 
-  <dt>Wohnort: </dt>
-  <dd>{{ teilnehmer.location_current }}</dd>
+    <dt>Wohnort: </dt>
+    <dd>{{ teilnehmer.location_current }}</dd>
 
-  <dt>Wohnorte seit der Schulzeit:</dt>
-  <dd>{{ teilnehmer.locations_old|join:", " }}</dd>
+    <dt>Wohnorte seit der Schulzeit:</dt>
+    <dd>{{ teilnehmer.locations_old|join:", " }}</dd>
 
-  <dt>Beziehungsstatus:</dt>
-  <dd>{{ teilnehmer.relationship_status }}</dd>
+    <dt>Beziehungsstatus:</dt>
+    <dd>{{ teilnehmer.relationship_status }}</dd>
 
-  <dt>Anzahl Kinder:</dt>
-  <dd>{{ teilnehmer.kids }}</dd>
+    <dt>Anzahl Kinder:</dt>
+    <dd>{{ teilnehmer.kids }}</dd>
 
-  <dt>Beruf:</dt>
-  <dd>{{ teilnehmer.job }}</dd>
+    <dt>Beruf:</dt>
+    <dd>{{ teilnehmer.job }}</dd>
 
-  <dt>Hobbies:</dt>
-  <dd>{{ teilnehmer.hobbies|join:", " }}</dd>
-</dl>
+    <dt>Hobbies:</dt>
+    <dd>{{ teilnehmer.hobbies|join:", " }}</dd>
+  </dl>
+</div>
