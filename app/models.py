@@ -119,6 +119,15 @@ class Teilnehmer(models.Model):
             path=reverse("edit", kwargs={'token': self.get_token()}),
         )
 
+    def get_show_link(self):
+        return "{host}{path}".format(
+            host="http://klasse-93.de",
+            path=reverse("show", kwargs={'token': self.get_token()}),
+        )
+
+    def kommt(self):
+        return self.state in (self.STATE_PROPABLY, self.STATE_SURE)
+            
     def send_token(self):
         send_mail(
             'Klassenbuch',

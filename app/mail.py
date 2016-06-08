@@ -13,3 +13,14 @@ def send_mail1():
             'info@klasse-93.de',
             [teilnehmer.mail],
             fail_silently=False)
+
+def send_mail2():
+    mail_template = get_template('mail/mail2.tpl')
+    for teilnehmer in Teilnehmer.objects.exclude(mail='').exclude(mail=None):
+        body = mail_template.render({'teilnehmer': teilnehmer})
+        send_mail(
+            'Klassentreffen letzte Erinnerung',
+            body,
+            'info@klasse-93.de',
+            [teilnehmer.mail],
+            fail_silently=False)
