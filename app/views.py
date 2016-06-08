@@ -68,5 +68,5 @@ class TeilnehmerDetailView(DetailView):
     slug_url_kwarg = slug_field = 'token'
 
 
-class TeilnehmerListView(LoginRequiredMixin, ListView):
+class TeilnehmerListView(ListView):
     queryset = Teilnehmer.objects.exclude(location_current="")

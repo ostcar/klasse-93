@@ -10,8 +10,10 @@ jetzt eine Minute Zeit hierfür, damit ein möglichst vollständiges Klassenbuch
 entsteht. {% endif %}Hier nocheinmal der Link, mit dem du die Daten für das
 Klassenbuch eintragen kannst: {{ teilnehmer.get_edit_link }}
 
-Hier findest du eine kleine Vorschau, wie deine Seite im Klassenbuch aussehen
-wird: {{ teilnehmer.get_show_link }}
+Hier findest du den aktuellen Entwurf des Klassenbuches:
+
+http://klasse-93.de/show/
+
 {% if teilnehmer.kommt %}
 Am Samstag werden wir uns zunächst zu Kaffee und Kuchen in der Cafeteria der
 Schule treffen. Bitte gib uns bis Freitag per E-Mail Bescheid, ob und wenn ja
