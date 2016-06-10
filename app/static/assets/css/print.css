@@ -18,3 +18,9 @@ dl dt {
 body {
   font-family: arial;
 }
+
+.platzhalter {
+  width: 300px;
+  height: 300px;
+  display: inline-block;
+}

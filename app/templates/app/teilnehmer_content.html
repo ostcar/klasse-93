@@ -1,10 +1,14 @@
 <div class="teilnehmer">
   <h1>{{ teilnehmer.name }}</h1>
-  {% if teilnehmer.image_new %}
-    <img src="{{ teilnehmer.image_new.url }}" alt="Neues Bild">
-  {% endif %}
   {% if teilnehmer.image_old %}
-    <img src="{{ teilnehmer.image_old.url }}" alt="Altes Bild">
+    <img class="old" src="{{ teilnehmer.image_old.url }}" alt="Altes Bild">
+  {% else %}
+    <span class="platzhalter">&nbsp;</span>
+  {% endif %}
+  {% if teilnehmer.image_new %}
+    <img class="new" src="{{ teilnehmer.image_new.url }}" alt="Neues Bild">
+  {% else %}
+    <span class="platzhalter">&nbsp;</span>
   {% endif %}
   <dl>
     <dt>E-Mail-Adresse:</dt>
