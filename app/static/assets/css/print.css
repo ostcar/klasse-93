@@ -14,4 +14,7 @@ dl dt {
   font-weight: bold;
   margin-top: 0.5em;
 }
+
+body {
+  font-family: arial;
 }
