@@ -15,6 +15,11 @@
 <section id="intro" class="wrapper style1 fullscreen fade-up">
 	<div class="inner">
 		<h1>{{ object.name }}</h1>
+		<div>
+			Das Klassenbuch ist im Druck, weshalb keine weiteren Daten eingetragen
+			werden können.
+		</div>
+
 		<form id="comment_form" action="" method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 			{{ form.as_p }}
