@@ -47,14 +47,14 @@ class TeilnehmerUpdateView(UpdateView):
     model = Teilnehmer
     fields = [
             'state',
-            # 'location_current',
-            # 'locations_old',
-            # 'relationship_status',
-            # 'kids',
-            # 'image_new',
-            # 'image_old',
-            # 'job',
-            # 'hobbies',
+            'location_current',
+            'locations_old',
+            'relationship_status',
+            'kids',
+            'image_new',
+            'image_old',
+            'job',
+            'hobbies',
         ]
     slug_url_kwarg = 'token'
     slug_field = 'token'
